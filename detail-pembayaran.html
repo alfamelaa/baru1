@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="images/fav.png" type="image/x-icon">
+  <title>History | Sestaria.co</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; 
+    }
+  </style>
+  <script>
+    function deleteTransaction(element) {
+      element.parentElement.remove();
+    }
+  </script>
+</head>
+<body class="bg-gradient-to-b from-red-100 via-orange-100 to-yellow-200">
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md p-4 flex justify-between items-center sticky top-0 z-50">
+    <h1 class="text-2xl font-bold text-red-600">SESTARIA.CO</h1>
+    <ul class="flex space-x-6 text-gray-700">
+      <li><a href="index.html" class="hover:text-red-600 transition">Home</a></li>
+      <li><a href="product.html" class="hover:text-red-600 transition">Product</a></li>
+      <li><a href="suplier.html" class="hover:text-red-600 transition">Suplier</a></li>
+      <li><a href="about.html" class="hover:text-red-600 transition">About</a></li>
+      <li><a href="detail-pembayaran.html" class="hover:text-red-600 transition">History</a></li>
+    </ul>
+  </nav>
+
+  <main class="flex-grow p-6">
+    <section id="history" class="p-6 mt-12 bg-white shadow-xl rounded-2xl max-w-5xl mx-auto">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">Riwayat Pembayaran</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Bagian Riwayat Pembelian -->
+        <div class="bg-gray-100 p-4 rounded-lg">
+          <h3 class="text-2xl font-bold text-gray-800 mb-4">Riwayat Pembelian</h3>
+          <div class="space-y-4">
+            <div class="transaction-item flex justify-between items-center">
+              <div>
+                <h4 class="font-bold">Trendy Jacket</h4>
+                <p><strong>Nama: </strong>John Doe</p>
+                <p><strong>No Telepon: </strong>0821-2345-6789</p>
+                <p><strong>Alamat: </strong>Jl. Merdeka No. 45, Jakarta</p>
+                <p><strong>Jumlah: </strong>2</p>
+                <p><strong>Total: </strong>Rp 1.000.000</p>
+                <p><strong>Tanggal: </strong> 01-06-2024</p>
+                <p><strong>Metode Pembayaran: </strong>Transfer Bank</p>
+              </div>
+              <button onclick="deleteTransaction(this)" class="bg-red-600 text-white py-1 px-3 rounded hover:bg-red-700 transition">Hapus</button>
+            </div>
+
+            <div class="transaction-item flex justify-between items-center">
+              <div>
+                <h4 class="font-bold">Sweater</h4>
+                <p><strong>Nama: </strong>Alice</p>
+                <p><strong>No Telepon: </strong>0812-3456-7890</p>
+                <p><strong>Alamat: </strong>Jl. Suka No. 12, Bandung</p>
+                <p><strong>Jumlah: </strong>1</p>
+                <p><strong>Total: </strong>Rp 150.000</p>
+                <p><strong>Tanggal: </strong> 01-06-2024</p>
+                <p><strong>Metode Pembayaran: </strong>Cash on Delivery</p>
+              </div>
+              <button onclick="deleteTransaction(this)" class="bg-red-600 text-white py-1 px-3 rounded hover:bg-red-700 transition">Hapus</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bagian Riwayat Suplier -->
+        <div class="bg-gray-100 p-4 rounded-lg">
+          <h3 class="text-2xl font-bold text-gray-800 mb-4">Riwayat Suplier</h3>
+          <div class="space-y-4">
+            <div class="transaction-item flex justify-between items-center">
+              <div>
+                <h4 class="font-bold">Suplier A</h4>
+                <p><strong>Nama: </strong>PT. Sumber Makmur</p>
+                <p><strong>No Telepon: </strong>021-1234-5678</p>
+                <p><strong>Alamat: </strong>Jl. Raya No. 10, Jakarta</p>
+                <p><strong>Jumlah Barang: </strong>50</p>
+                <p><strong>Tanggal: </strong> 01-06-2024</p>
+                <p><strong>Total Pembelian: </strong>Rp 5.000.000</p>
+              </div>
+              <button onclick="deleteTransaction(this)" class="bg-red-600 text-white py-1 px-3 rounded hover:bg-red-700 transition">Hapus</button>
+            </div>
+
+            <div class="transaction-item flex justify-between items-center">
+              <div>
+                <h4 class="font-bold">Suplier B</h4>
+                <p><strong>Nama: </strong>CV. Jaya Abadi</p>
+                <p><strong>No Telepon: </strong>021-9876-5432</p>
+                <p><strong>Alamat: </strong>Jl. Kebon Jeruk No. 5, Bandung</p>
+                <p><strong>Jumlah Barang: </strong>30</p>
+                <p><strong>Tanggal: </strong> 01-06-2024</p>
+                <p><strong>Total Pembelian: </strong>Rp 3.000.000</p>
+              </div>
+              <button onclick="deleteTransaction(this)" class="bg-red-600 text-white py-1 px-3 rounded hover:bg-red-700 transition">Hapus</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-white text-center p-4 border-t">
+    <p class="text-sm text-gray-500">© 2025 Sestaria.co. All rights reserved.</p>
+  </footer>
+</body>
+</html>

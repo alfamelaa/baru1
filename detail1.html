@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/fav.png" type="image/x-icon">
+    <link rel="stylesheet" href="detail.css">
+    <title>T-Shirt | Sestaria.co</title>
+</head>
+<body class="bg-gradient-to-b from-red-100 via-orange-100 to-yellow-100">
+  <nav class="bg-white shadow-md p-4 flex justify-between items-center sticky top-0 z-50">
+    <h1 class="text-2xl font-bold text-red-600">SESTARIA.CO</h1>
+    <ul class="flex space-x-6 text-gray-700">
+      <li><a href="index.html" class="hover:text-red-600 transition">Home</a></li>
+      <li><a href="product.html" class="hover:text-red-600 transition">Product</a></li>
+      <li><a href="suplier.html" class="hover:text-red-600 transition">Suplier</a></li>
+      <li><a href="about.html" class="hover:text-red-600 transition">About</a></li>
+      <li><a href="detail-pembayaran.html" class="hover:text-red-600 transition">History</a></li>
+    </ul>
+  </nav>
+  
+  <main class="p-6">
+    <section id="detail" class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+      <div class="image-container">
+        <img src="images/kaos.png" alt="Detail Produk">
+      </div>
+      <div class="description">
+        <h2 class="text-3xl font-bold text-gray-800">T-Shirt</h2>
+        <p class="text-md text-gray-500 mb-2">Rp 100.000</p>
+        <p class="text-md text-gray-500 mb-2"><strong>Stok Tersedia: </strong><span id="stok">50</span></p> <!-- Added stock information -->
+        <div class="order-form">
+          <h3 class="text-xl font-bold text-gray-700">Pesan Sekarang</h3>
+
+          <form action="index.php" method="post" id="orderForm" onsubmit="return validateForm()">
+            <input type="text" placeholder="Nama" class="input-field" id="nama" required minlength="3" oninput="checkForm()">
+            <input type="number" placeholder="Jumlah" class="input-field" id="jumlah" required maxlength="9" oninput="checkForm()">
+            <input type="text" placeholder="Alamat" class="input-field" id="alamat" required oninput="checkForm()">
+            <input type="tel" placeholder="No Telepon" class="input-field" id="noTelepon" required oninput="checkForm()">
+            <input type="email" placeholder="Email" class="input-field" id="email" required oninput="checkForm()">
+            
+            <!-- Dropdown untuk Metode Pembayaran -->
+            <label for="paymentMethod" class="block text-md font-medium text-gray-700 mt-4">Metode Pembayaran:</label>
+            <select id="paymentMethod" class="input-field" required oninput="checkForm()">
+              <option value="">Pilih Metode Pembayaran</option>
+              <option value="transfer">Transfer Bank</option>
+              <option value="credit_card">Kartu Kredit</option>
+              <option value="cod">Cash on Delivery</option>
+            </select>
+            
+            <p><strong>Total: </strong><span id="total">0</span></p>
+            <button type="button" class="btn" onclick="hitungTotal()">Cek Total</button>
+            <button type="submit" class="btn" id="bayarButton" style="display: none;">Bayar</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function hitungTotal() {
+      // Function to calculate total
+      const jumlah = document.getElementById('jumlah').value;
+      const hargaPerUnit = 100000; // Price per unit
+      const total = jumlah * hargaPerUnit;
+      document.getElementById('total').innerText = total;
+
+      // Tampilkan tombol Bayar setelah total dihitung
+      const bayarButton = document.getElementById('bayarButton');
+      if (total > 0) {
+        bayarButton.style.display = 'inline'; // Tampilkan tombol Bayar
+      } else {
+        bayarButton.style.display = 'none'; // Sembunyikan tombol Bayar jika total 0
+      }
+    }
+
+    function checkForm() {
+      const nama = document.getElementById('nama').value;
+      const jumlah = document.getElementById('jumlah').value;
+      const alamat = document.getElementById('alamat').value;
+      const noTelepon = document.getElementById('noTelepon').value;
+      const email = document.getElementById('email').value;
+      const paymentMethod = document.getElementById('paymentMethod').value;
+
+      const bayarButton = document.getElementById('bayarButton');
+
+      // Enable tombol Bayar hanya jika semua field terisi
+      if (nama && jumlah && alamat && noTelepon && email && paymentMethod) {
+        bayarButton.style.display = 'inline'; // Tampilkan tombol Bayar
+      } else {
+        bayarButton.style.display = 'none'; // Sembunyikan tombol Bayar
+      }
+    }
+
+    function validateForm() {
+      const nama = document.getElementById('nama').value;
+      const jumlah = document.getElementById('jumlah').value;
+      if (nama.length < 3) {
+        alert("Nama harus terdiri dari minimal 3 karakter.");
+        return false; // Mencegah form dari pengiriman
+      }
+      
+      const jumlahInt = parseInt(jumlah, 10);
+      if (isNaN(jumlahInt) || jumlahInt < 1 || jumlahInt > 9) {
+        alert("Jumlah nya terbatas kak :) maksimal 9 yaa!");
+        return false; // Mencegah form dari pengiriman
+      }
+      
+      return true; // Mengizinkan form untuk dikirim
+    }
+  </script>
+</body>
+</html>
